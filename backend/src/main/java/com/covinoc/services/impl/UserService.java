@@ -1,5 +1,6 @@
 package com.covinoc.services.impl;
 
+import com.covinoc.models.dtos.UserDTO;
 import com.covinoc.models.entities.User;
 import com.covinoc.repository.UserRepository;
 import com.covinoc.services.IUserService;
@@ -26,12 +27,28 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public User save(User user) {
+    public User save(UserDTO userRequest) {
+        User user = User.builder()
+                .name(userRequest.name())
+                .phoneNumber(userRequest.phoneNumber())
+                .build();
+
         return userRepository.save(user);
     }
 
     @Override
+    public void update(Long id, UserDTO userRequest) {
+        User user = findById(id);
+        user.setName(userRequest.name());
+        user.setPhoneNumber(userRequest.phoneNumber());
+
+        userRepository.save(user);
+    }
+
+    @Override
     public void deleteById(Long id) {
+        findById(id);
+
         userRepository.deleteById(id);
     }
 }
