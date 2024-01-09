@@ -3,7 +3,6 @@ package com.covinoc.controllers;
 import com.covinoc.models.dtos.UserDTO;
 import com.covinoc.models.entities.User;
 import com.covinoc.services.IUserService;
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
