@@ -1,9 +1,6 @@
 package com.covinoc.models.entities;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import lombok.*;
 import org.hibernate.proxy.HibernateProxy;
 
@@ -23,13 +20,9 @@ public class User{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
-    @NotNull(message = "Name cannot be null")
-    @NotEmpty(message = "Name cannot be empty")
-    @Size(min = 3, message = "Name must be at least 3 characters long")
     @Column(nullable = false)
     String name;
 
-    @Size(min = 10, message = "Phone number must be at least 10 digits long")
     @Column(unique = true, nullable = false, name = "phone_number")
     String phoneNumber;
 
